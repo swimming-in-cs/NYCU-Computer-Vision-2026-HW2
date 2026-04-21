@@ -56,3 +56,5 @@ nycu-hw2-data/
 |-------|-------|
 | Validation mAP | 0.4342 |
 | Public Test (CodaBench) | 0.35 |
+
+![Leaderboard Score](images/score.png)
