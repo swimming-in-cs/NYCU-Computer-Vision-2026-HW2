@@ -22,19 +22,25 @@ pip install pycocotools scipy albumentations tqdm
 ## Usage
 
 **Training & Prediction:**
+
 ```bash
-# On Google Colab, paste train.py into a cell and run
+python train.py
+```
+
+```bash
 # The script automatically resumes from last.pth if a checkpoint exists
 # pred.json is generated automatically after training
 ```
 
 **Data structure:**
+```
 nycu-hw2-data/
 ├── train/
 ├── valid/
 ├── test/
 ├── train.json
 └── valid.json
+```
 
 
 ## Performance Snapshot
