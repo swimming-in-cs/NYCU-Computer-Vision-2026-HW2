@@ -2,50 +2,51 @@
 
 Student ID: 111550005
 
+Name: 林均豪
+
 ## Introduction
 
-This repository contains the implementation of Digit Detection using Deformable DETR with ResNet-50 backbone for NYCU Computer Vision 2026 HW2.
+This project implements a digit detection model using Deformable DETR
+with ResNet-50 as the backbone. The model is trained end-to-end with
+Hungarian matching for set-based loss computation and multi-scale
+deformable attention for efficient feature aggregation. Per-class NMS
+is applied during inference to preserve overlapping digits of different
+classes.
 
 ## Environment Setup
-
 ```bash
 pip install torch torchvision
 pip install pycocotools scipy albumentations tqdm
 ```
 
-Or on Google Colab:
-
-```bash
-!pip install pycocotools scipy albumentations tqdm
-```
-
 ## Usage
 
-### Training
-
-Paste the contents of `train.py` into a Google Colab cell and run.
-
-The script will automatically resume from the latest checkpoint if one exists.
-
-### Inference
-
-After training, `pred.json` will be generated automatically. To run inference manually:
-
-```python
-best_ck = torch.load("path/to/best.pth", map_location=device)
-model.load_state_dict(best_ck["model_state"])
-run_inference(model, cfg, device)
-```
-
-Then zip and submit:
-
+**Training & Prediction:**
 ```bash
-zip submission.zip pred.json
+# On Google Colab, paste train.py into a cell and run
+# The script automatically resumes from last.pth if a checkpoint exists
+# pred.json is generated automatically after training
 ```
+
+**Data structure:**
+nycu-hw2-data/
+├── train/
+├── valid/
+├── test/
+├── train.json
+└── valid.json
+
 
 ## Performance Snapshot
 
-| Split | mAP@[0.50:0.95] |
-|-------|----------------|
-| Validation | 0.4342 |
+| Epoch | Val mAP@[0.50:0.95] |
+|-------|---------------------|
+| 0     | 0.311               |
+| 3     | 0.391               |
+| 9     | 0.411               |
+| 12    | 0.434               |
+
+| Split | Score |
+|-------|-------|
+| Validation mAP | 0.4342 |
 | Public Test (CodaBench) | 0.35 |
